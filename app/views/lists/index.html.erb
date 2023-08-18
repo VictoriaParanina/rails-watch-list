@@ -1,7 +1,22 @@
-<h1>Your movie lists</h1>
-<ul style="list-style: none">
-    <%@lists.each do  |list| %>
-    <li><%= list.id%> - <%= link_to list.name, list_path(list)%></li>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1585647347483-22b66260dfff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80'); width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; color: white; text-align: center;">
+  <div class="container">
+  <h1>Find a movie for any life situation</h1>
+  </div>
+</div>
+<h1>My collections</h1>
+<ul class="list-group d-flex flex-row">
+  <% @lists.each do |list| %>
+    <li class="list-group-item flex-fill">
+      <div class="card bg-white text-dark">
+        <div class="card-body text-center">
+          <%= link_to list_path(list) do %>
+            <h5 class="card-title"><%= list.name %></h5>
+          <% end %>
+        </div>
+      </div>
+    </li>
   <% end %>
-   <%= link_to "Add a new list", new_list_path%>
+  <li class="list-group-item flex-fill">
+    <%= link_to "Add a new list", new_list_path, class: "btn btn-primary btn-block" %>
+  </li>
 </ul>
